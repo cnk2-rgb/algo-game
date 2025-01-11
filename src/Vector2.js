@@ -1,3 +1,4 @@
+/* Class to store 2D location */
 export class Vector2 {
     constructor(x = 0, y = 0) {
         //saves x and y value

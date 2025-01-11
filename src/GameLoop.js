@@ -1,3 +1,5 @@
+
+/* Manages the main game loop and handle updates/redering at fixed time steps */
 export class GameLoop {
     //params are functions?
     constructor(update, render) {

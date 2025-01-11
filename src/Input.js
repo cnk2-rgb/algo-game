@@ -3,6 +3,8 @@ export const RIGHT = "RIGHT"
 export const UP = "UP"
 export const DOWN = "DOWN"
 
+/* Handles user input via keyboard to track directional commands like 
+"up," "down," "left," and "right."*/
 export class Input {
   constructor() {
 

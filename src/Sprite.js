@@ -1,9 +1,9 @@
 import { Vector2 } from "./Vector2.js";
 
-//so we can have specific drawing instructions
+// so we can have specific drawing instructions
 export class Sprite {
     constructor({
-        //config options for each sprite
+        // config options for each sprite
         resource,
         frameSize, //can use one frame from hero spreadsheet (small size)
         hFrames, // can "index" into hero spreadsheet
@@ -13,7 +13,7 @@ export class Sprite {
         position, //position
     }) {
     this.resource = resource;
-    this.frameSize = frameSize ?? new Vector2(16,16); //default frame size varies game to game
+    this.frameSize = frameSize ?? new Vector2(16, 16); //default frame size varies game to game
     this.hFrames = hFrames ?? 1; //default 1 for sky if null val passed in constructor
     this.vFrames = vFrames ?? 1;
     this.frame = frame ?? 0;
@@ -48,7 +48,7 @@ export class Sprite {
         const frame = this.frameMap.get(this.frame); //index into frame map
         if (frame) {
             frameCoordX = frame.x;
-            frameCoordY = frame.y;  
+            frameCoordY = frame.y;
         }
 
         //j for easier readability
@@ -69,4 +69,5 @@ export class Sprite {
         );
 
     }
+
 }

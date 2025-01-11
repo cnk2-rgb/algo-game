@@ -1,3 +1,4 @@
+/* Manages game assests lke images loading them before use.*/
 class Resources {
     //concepts:
         //functional vs object oriented programming?
@@ -12,6 +13,7 @@ class Resources {
         //obj for every asset we plan to download
         this.toLoad = {
             //download image files
+            coin: "sprites/coin.png",
             sky: "sprites/sky.png",
             ground: "sprites/ground.png",
             hero: "sprites/hero-sheet.png",
@@ -32,12 +34,19 @@ class Resources {
                 isLoaded: false
             }
             //creates safety check to make sure image is loaded
+            img.onerror = () => {
+                console.error(`Failed to load image: ${this.toLoad[key]}`);
+            };
             img.onload = () => {
+                // console.log(`Image loaded: ${this.toLoad[key]}`);
                 this.images[key].isLoaded = true;
-            }
-        })
+            };
+        });
     }
-    
+    // New method to check if all images are loaded
+    allImagesLoaded() {
+        return Object.values(this.images).every(image => image.isLoaded);
+    }
 }
 
 // export an instance of resources class
