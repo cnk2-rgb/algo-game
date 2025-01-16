@@ -87,27 +87,39 @@ const update = () => {
 };
 
 const draw = () => {
+    // Draw background
     skySprite.drawImage(ctx, 0, 0);
     groundSprite.drawImage(ctx, 0, 0);
-    // center hero in cell (state is still hero pos)
+
+    // Center hero in cell
     const heroOffset = new Vector2(-8, -21);
-    const heroPosX = heroPos.x+heroOffset.x;
-    const heroPosY = heroPos.y+1+heroOffset.y;
+    const heroPosX = heroPos.x + heroOffset.x;
+    const heroPosY = heroPos.y + 1 + heroOffset.y;
     shadow.drawImage(ctx, heroPosX, heroPosY);
     hero.drawImage(ctx, heroPosX, heroPosY);
-    
+
+    // Draw coins
     coins.forEach(coin => {
+        // Draw coin sprite
         coinSprite.drawImage(ctx, coin.pos.x, coin.pos.y);
-        // // show the coin value beneath the coin (this is a little faulty :())
-        // ctx.font = "bold 10px Arial"; // Set font size
-        // ctx.fillStyle = "black"; // Set text color
-        // ctx.fillText(coin.value, coin.pos.x + 5, coin.pos.y + 36);
+
+        // Debug: Draw a bounding box around the coin
+        ctx.strokeStyle = "red"; // Red outline for visibility
+        ctx.lineWidth = 1;
+        ctx.strokeRect(
+            coin.pos.x - 16, 
+            coin.pos.y - 16, 
+            32, // Width of the bounding box
+            32  // Height of the bounding box
+        );
     });
-    // Display score on the canvas
+
+    // Display score
     ctx.font = "15px Arial";
     ctx.fillStyle = "black";
     ctx.fillText(`Score: ${score}`, 10, 30);
-}
+};
+
 
 
 //game loop
